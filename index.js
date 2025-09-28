@@ -3,6 +3,7 @@ const app=express();
 const mongoose=require("mongoose");
 const dotenv=require("dotenv");
 const article=require("./models/articles.js")
+const connectDB=require("./db/db.js");
 dotenv.config();
 const cors=require("cors");
 app.use(cors());
@@ -14,9 +15,13 @@ app.get("/check",(req,res)=>{
 }
 );
 
-app.listen(PORT,()=>{
+connectDB().then(()=>{
+    console.log("Connected to DB");
+    app.listen(PORT,()=>{
         console.log(`Server is running on port ${PORT}`);
     })
-
+}).catch((err)=>{
+    console.log(err);
+}); 
 
 
