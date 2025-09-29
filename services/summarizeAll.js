@@ -7,11 +7,11 @@ async function summarizeAllArticles() {
 
   for (const article of articles) {
     const exists = await Summary.findOne({ articleId: article._id });
-  //  if (exists) continue; // skip if already summarized
+ 
        console.log(`URL: ${article.url}`);
 
     try {
-      // Now get crispTitle too
+      
       const { crispTitle, summary, sentiment } = await summarizeArticle(article);
       const article_url = article;
       const article_id= article._id;
@@ -29,7 +29,7 @@ async function summarizeAllArticles() {
       console.log(`Sentiment: ${sentiment}`);
       console.log("-----");
     } catch (err) {
-      console.error(`❌ Failed to summarize: ${article.title}`, err);
+      console.error(`Failed to summarize: ${article.title}`, err);
     }
   }
 }

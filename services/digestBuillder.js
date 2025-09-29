@@ -3,7 +3,7 @@ const Summary = require("../models/summary.js");
 async function buildDigest() {
   const summaries = await Summary.find({})
     .sort({ createdAt: -1 }) // latest first
-    .limit(10);
+    .limit(5);
 
   let digest = `🤖 AI Tech Digest – ${new Date().toDateString()}\n\n`;
 

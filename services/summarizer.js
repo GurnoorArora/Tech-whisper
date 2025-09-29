@@ -25,11 +25,11 @@ async function summarizeArticle(article) {
   let raw = response.choices[0]?.message?.content?.trim() || "";
 
   try {
-    // Sometimes the model wraps JSON in ```json ... ```
+   
     raw = raw.replace(/```json/gi, "").replace(/```/g, "");
     return JSON.parse(raw);
   } catch (err) {
-    console.error("⚠️ Failed to parse LLM response:", raw);
+    console.error(" Failed to parse LLM response:", raw);
     return { 
       crispTitle: article.title?.slice(0, 50) || "Untitled News", 
       summary: "Summary unavailable", 

@@ -4,6 +4,8 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const nodeCron = require("node-cron");
 const { buildDigest } = require("./services/digestBuillder.js");
+const { sendWhatsAppMessage } = require("./services/sendWhatsappMessage.js");
+
 
 dotenv.config();
 
@@ -62,6 +64,16 @@ app.get("/digest-now", async (req, res) => {
   } catch (error) {
     console.error("❌ Digest build failed:", error);
     res.status(500).send("Digest build failed");
+  }
+});
+app.get("/send-digest", async (req, res) => {
+  try {
+    const digest = await buildDigest();
+    await sendWhatsAppMessage(digest);
+    res.send("Digest sent to WhatsApp!");
+  } catch (error) {
+    console.error("Failed to send digest:", error);
+    res.status(500).send("Failed to send digest");
   }
 });
 
