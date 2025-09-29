@@ -25,7 +25,6 @@ async function summarizeArticle(article) {
   let raw = response.choices[0]?.message?.content?.trim() || "";
 
   try {
-   
     raw = raw.replace(/```json/gi, "").replace(/```/g, "");
     return JSON.parse(raw);
   } catch (err) {
