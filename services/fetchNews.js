@@ -16,7 +16,9 @@ async function fetchAndStoreTechNews() {
 
   let inserted = 0, skipped = 0;
 
-  for (const a of data.articles) {
+  const limitedArticles = data.articles.slice(0, 30);
+
+  for (const a of limitedArticles) {
     if (!a.url) { skipped++; continue; }
 
     const doc = {
@@ -32,7 +34,7 @@ async function fetchAndStoreTechNews() {
 
     try {
       const res = await Article.updateOne(
-        { url: doc.url },
+        { url: doc.url },              
         { $setOnInsert: doc },
         { upsert: true }
       );
@@ -42,7 +44,8 @@ async function fetchAndStoreTechNews() {
       skipped++;
     }
   }
-  return { total: data.articles.length, inserted, skipped };
+
+  return { totalFetched: limitedArticles.length, inserted, skipped };
 }
 
 module.exports = { fetchAndStoreTechNews };
