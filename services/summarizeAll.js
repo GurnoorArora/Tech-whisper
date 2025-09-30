@@ -24,10 +24,10 @@ async function summarizeAllArticles() {
         sentiment
       });
 
-      console.log(`Title: ${crispTitle}`);
+     /* console.log(`Title: ${crispTitle}`);
       console.log(`Summary: ${summary}`);
       console.log(`Sentiment: ${sentiment}`);
-      console.log("-----");
+      console.log("-----");*/
     } catch (err) {
       console.error(`Failed to summarize: ${article.title}`, err);
     }

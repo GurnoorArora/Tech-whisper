@@ -5,7 +5,7 @@ async function summarizeArticle(article) {
   const prompt = `
   Prepare a news digest entry for a tech audience.
   - Provide a crisp 4–6 word title (digest friendly).
-  - Provide a descriptive 2–3 sentence summary so the meaning of the news is clear.
+  - Provide a brief sentence summary so the meaning of the news is clear.
   - Classify sentiment as Positive, Negative, or Neutral.
 
   Title: ${article.title}
