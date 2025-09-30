@@ -3,7 +3,7 @@
 AI Tech News Digest is a GenAI-powered application that **fetches technology news, summarizes it with LLMs, and generates a daily digest**.  
 Currently, you can preview the digest in the browser/Postman.  
 (WhatsApp delivery comes next 🚀)
-
+deployed-url- https://tech-whisper.onrender.com/check
 ---
 
 ## ✨ Features
